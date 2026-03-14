@@ -15,13 +15,29 @@ align-items:center;
 background:linear-gradient(135deg,white);
 }
 
-/* Container superior dos logos */
+/* TOPO */
 .topo{
 width:100%;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:20px 40px;
+background:#fff;
+/* border-bottom:1px solid #ccc;  removido */
+}
+
+/* container do topo */
+.container{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+/* DIMINUIR LOGO SEDUC */
+.logo-rodape{
+width:150px;
+height:auto;
 }
 
 /* Logos laterais */
@@ -38,8 +54,6 @@ display:flex;
 justify-content:center;
 }
 
-/* Logo central - tamanho médio */
-
 /* Imagens responsivas */
 #Logo_Educacao img,
 #logo_Gov img,
@@ -52,11 +66,33 @@ filter:drop-shadow(0px 3px 6px rgba(0,0,0,0.2));
 transition:transform 0.3s ease;
 }
 
-/* efeito moderno ao passar o mouse */
+/* efeito hover */
 #Logo_Educacao img:hover,
 #logo_Gov img:hover,
 #Logo_Imagem img:hover{
 transform:scale(1.05);
+}
+
+/* MENU SOCIAL */
+.social{
+list-style:none;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.social li a{
+text-decoration:none;
+color:#333;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
+}
+
+.social img{
+width:20px;
+height:20px;
 }
 
 /* Card do login */
@@ -118,6 +154,9 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 transition:0.3s;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .btn:hover{
@@ -125,7 +164,40 @@ background:#555;
 transform:translateY(-2px);
 }
 
-/* mensagem */
+/* Loader de bolinhas */
+.loader-dots{
+display:none;
+gap:5px;
+margin-left:10px;
+}
+
+.loader-dots span{
+width:8px;
+height:8px;
+background:white;
+border-radius:50%;
+display:inline-block;
+animation:pular 1s infinite ease-in-out;
+}
+
+.loader-dots span:nth-child(2){
+animation-delay:0.2s;
+}
+
+.loader-dots span:nth-child(3){
+animation-delay:0.4s;
+}
+
+/* Quando o botão estiver carregando */
+.btn.loading .loader-dots{
+display:flex;
+}
+
+.btn.loading .btn-text{
+display:none;
+}
+
+/* Mensagem */
 .msg{
 margin-top:15px;
 text-align:center;
@@ -133,7 +205,7 @@ font-size:14px;
 color:#555;
 }
 
-/* animação */
+/* animação fade-in */
 @keyframes fade{
 from{
 opacity:0;
@@ -145,12 +217,23 @@ transform:translateY(0);
 }
 }
 
-/* Responsivo */
+/* animação das bolinhas pulsando */
+@keyframes pular{
+0%, 80%, 100%{
+transform:scale(0);
+}
+40%{
+transform:scale(1);
+}
+}
+
+/* RESPONSIVO */
 @media(max-width:768px){
 
 .topo{
 flex-direction:column;
 gap:10px;
+padding:15px;
 }
 
 #Logo_Educacao img,
@@ -163,35 +246,10 @@ max-height:60px;
 width:90%;
 padding:30px;
 }
-.topo{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #ccc;
-}
-
-.container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
 
 .social{
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+justify-content:center;
+margin-top:10px;
 }
 
-.social li{
-  margin-left: 15px;
-}
-
-.social a{
-  text-decoration: none;
-  color: #333;
-}
 }

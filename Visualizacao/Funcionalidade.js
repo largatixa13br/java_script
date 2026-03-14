@@ -1,13 +1,16 @@
-document.getElementById("frmLogin").addEventListener("submit", function(event) {
+const form = document.getElementById("frmLogin");
+const btn = document.querySelector(".btn");
+const msg = document.getElementById("msg");
 
+form.addEventListener("submit", function(event) {
     event.preventDefault(); // impede envio automático
 
     let email = document.getElementById("email").value.trim();
     let senha = document.getElementById("senha").value.trim();
-    let msg = document.getElementById("msg");
 
     msg.textContent = "";
 
+    // Validações
     if (email === "") {
         msg.textContent = "O campo email é obrigatório.";
         return;
@@ -28,7 +31,15 @@ document.getElementById("frmLogin").addEventListener("submit", function(event) {
         return;
     }
 
-    msg.style.color = "green";
-    msg.textContent = "Login válido!";
+    // Se passou nas validações
+    msg.textContent = "";
+    btn.classList.add("loading");   // ativa animação
+    btn.disabled = true;
 
+    // Simula carregamento (3 segundos)
+    setTimeout(() => {
+        btn.classList.remove("loading");
+        btn.disabled = false;
+        msg.textContent = "Login realizado com sucesso!";
+    }, 3000);
 });
